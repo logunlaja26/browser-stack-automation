@@ -1,0 +1,25 @@
+{
+  "name": "browser-stack-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logunlaja26/browser-stack-automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/logunlaja26/browser-stack-automation/issues"
+  },
+  "homepage": "https://github.com/logunlaja26/browser-stack-automation#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.3.0",
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.1",
+    "ts-node": "^10.9.2"
+  }
+}
