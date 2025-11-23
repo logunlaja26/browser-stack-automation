@@ -12,6 +12,8 @@
         "requireModule": [
             "ts-node/register"
         ],
-        "dryRun": false
+        "dryRun": false,
+        "timeout": 10000
+      
     }
 }
