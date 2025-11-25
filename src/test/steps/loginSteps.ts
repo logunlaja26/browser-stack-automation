@@ -6,7 +6,10 @@ let page: Page;
 Given('User navigates to the application', async function () {
     browser = await chromium.launch({ headless: false });
     page = await browser.newPage();
-    await page.goto('https://www.bstackdemo.com/');
+    await page.goto('https://www.bstackdemo.com/', { 
+      waitUntil: 'domcontentloaded', // or 'load' or 'networkidle'
+      timeout: 60000 
+    });
   });
 
 Given('User click on the login link', async function () {
@@ -16,13 +19,12 @@ Given('User click on the login link', async function () {
 When('User enter the username as {string}', async function (username) {
   await page.getByText('Select Username').press('Tab');
   await page.keyboard.type(username);
-  page.waitForTimeout(4000);
 });
 
 
 Given('User enter the password as {string}', async function (password) {
   await page.getByText('Select Password').press('Tab');
-  page.keyboard.type(password);
+  await page.keyboard.type(password);
 });
 
 When('User click on the login button', async function () {
