@@ -14,7 +14,8 @@
         ],
         "dryRun": false,
         "parallel": 2,
-        "format": ["progress-bar","html:reports/cucumber_report.html"]
+        "format": ["progress-bar",
+        "html:test-results/cucumber-report.html"]
       
     }
 }
