@@ -4,7 +4,7 @@ import { Page,Browser,chromium } from "@playwright/test";
 let browser: Browser;
 let page: Page;
 Given('User navigates to the application', async function () {
-    browser = await chromium.launch({ headless: false });
+    browser = await chromium.launch({ headless: true });
     page = await browser.newPage();
     await page.goto('https://www.bstackdemo.com/', { 
       waitUntil: 'domcontentloaded', // or 'load' or 'networkidle'
