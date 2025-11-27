@@ -7,6 +7,8 @@
             "snippetInterface": "async-await"
         },
         "require": [
+            "src/hooks/hooks.ts",
+            "src/hooks/*.ts",
             "src/test/steps/*.ts"
         ],
         "requireModule": [

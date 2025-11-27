@@ -1,12 +1,8 @@
 import { Given, When, Then } from "@cucumber/cucumber";
-import { Browser,chromium } from "@playwright/test";
 import { pageFixture } from "../../hooks/pageFixture";
 
-let browser: Browser;
 Given('User navigates to the application', async function () {
-    browser = await chromium.launch({ headless: true });
-    pageFixture.page = await browser.newPage();
-    await pageFixture.page.goto('https://www.bstackdemo.com/', { 
+    pageFixture.page.goto('https://www.bstackdemo.com/', { 
       waitUntil: 'domcontentloaded', // or 'load' or 'networkidle'
       timeout: 60000 
     });
@@ -33,12 +29,10 @@ When('User click on the login button', async function () {
 
 Then('Login should be success', async function () {
   await pageFixture.page.locator('span').filter({ hasText: 'Logout' }).isVisible();
-  await browser.close();
 });
 
 Then('Login should fail', async function () {
   await pageFixture.page.locator('h3').filter({ hasText: 'Invalid Username' }).isVisible();
-  await browser.close();
 });
   
   
