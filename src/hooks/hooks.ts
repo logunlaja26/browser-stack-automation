@@ -7,7 +7,7 @@ let context: BrowserContext;
 
 BeforeAll(async function () {
     browser = await chromium.launch({ 
-        headless: false,
+        headless: !false,
         slowMo: 1000 // Slows down actions by 1000ms (1 second) between each action
     });
 });
