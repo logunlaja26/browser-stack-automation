@@ -6,11 +6,16 @@ let browser: Browser;
 let context: BrowserContext;
 
 BeforeAll(async function () {
-    browser = await chromium.launch({ headless: !false });
+    browser = await chromium.launch({ 
+        headless: false,
+        slowMo: 1000 // Slows down actions by 1000ms (1 second) between each action
+    });
 });
 
 Before(async function () {
-    context = await browser.newContext();
+    context = await browser.newContext({
+        permissions: ['geolocation']
+    });
     const page = await context.newPage();
     pageFixture.page = page;
 });
