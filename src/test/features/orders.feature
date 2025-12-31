@@ -26,4 +26,4 @@ Scenario: User should be able to see order in orders page
     Examples: 
       | firstname | lastname | address     | state | postcode | phone_model        | product_id |
       | John      | Doe      | 123 Main St | NY    | 10001    | iPhone 12 Pro Max  | 3          |
-      | Jane      | Smith    | 456 Elm St  | CA    | 90210    | iPhone 11          | 4          |
+      | Jane      | Smith    | 456 Elm St  | CA    | 90210    | iPhone 12 Pro      | 4          |

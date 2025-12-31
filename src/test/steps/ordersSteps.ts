@@ -61,20 +61,22 @@ import { expect } from "@playwright/test";
 
 
   Then('user should be able to see the order confirmation message', async function () {
-    expect(pageFixture.page.getByText('Your Order has been successfully placed.', { exact: true })).toBeVisible(); 
+    await expect(pageFixture.page.getByText('Your Order has been successfully placed.', { exact: true })).toBeVisible();
   });
 
 
   Then('User click on continue shopping button in confirmation page', async function () {
-     
+    await pageFixture.page.getByRole('button', { name: 'Continue Shopping »' }).click();
   });
 
 
   Then('User click on the orders link', async function () {
-     
+    await pageFixture.page.locator('//a[@href="/orders"]').click();
   });
 
 
-  Then('user should be able to see the {string} in the orders page', async function (string) { 
+  Then('user should be able to see the {string} in the orders page', async function (phoneModel) { 
+    const expectedText = `Title: ${phoneModel}`;
+    await expect(pageFixture.page.locator(`div.order:has-text("${expectedText}")`).first()).toBeVisible();
     
   });
