@@ -19,30 +19,30 @@ import { expect } from "@playwright/test";
 
 
   Then('User enter the firstname as {string} in shipping address form', async function (firstname) {
-    await pageFixture.page.locator('//*[@id="firstNameInput"]').fill(firstname);
-    const inputValue = await pageFixture.page.locator('//*[@id="firstNameInput"]').inputValue();
+    await pageFixture.page.locator('#firstNameInput').fill(firstname);
+    const inputValue = await pageFixture.page.locator('#firstNameInput').inputValue();
     expect(inputValue).not.toBe('');
   });
 
 
   Then('User enter the lastname as {string} in shipping address form', async function (lastname) {
-    await pageFixture.page.locator('//*[@id="lastNameInput"]').fill(lastname);
-    const inputValue = await pageFixture.page.locator('//*[@id="lastNameInput"]').inputValue();
+    await pageFixture.page.locator('#lastNameInput').fill(lastname);
+    const inputValue = await pageFixture.page.locator('#lastNameInput').inputValue();
     expect(inputValue).not.toBe('');
   });
 
 
   Then('User enter the address as {string} in shipping address form', async function (address) {
-    await pageFixture.page.locator('//*[@id="addressLine1Input"]').fill(address);
-    const inputValue = await pageFixture.page.locator('//*[@id="addressLine1Input"]').inputValue();
+    await pageFixture.page.locator('#addressLine1Input').fill(address);
+    const inputValue = await pageFixture.page.locator('#addressLine1Input').inputValue();
     expect(inputValue).not.toBe('');
     expect(inputValue.length).toBeGreaterThan(0);
   });
 
 
   Then('User enter the state as {string} in shipping address form', async function (state) {
-    await pageFixture.page.locator('//*[@id="provinceInput"]').fill(state);
-    const inputValue = await pageFixture.page.locator('//*[@id="provinceInput"]').inputValue();
+    await pageFixture.page.locator('#provinceInput').fill(state);
+    const inputValue = await pageFixture.page.locator('#provinceInput').inputValue();
     expect(inputValue).not.toBe('');
     
   });
