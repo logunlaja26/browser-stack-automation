@@ -1,6 +1,7 @@
 import { BeforeAll, AfterAll, Before, After, Status, setDefaultTimeout } from "@cucumber/cucumber";
 import { Browser, BrowserContext, chromium } from "@playwright/test";
 import { pageFixture } from "./pageFixture";
+import { PageObjectManager } from "../pages/PageObjectManager";
 
 // Set default timeout to 60 seconds (60000ms) for all step definitions
 setDefaultTimeout(60 * 1000);
@@ -21,6 +22,7 @@ Before(async function () {
   });
   const page = await context.newPage();
   pageFixture.page = page;
+  pageFixture.pageManager = new PageObjectManager(page);
 });
 
 After(async function (this: any, { pickle, result }) {

@@ -3,20 +3,26 @@ import { pageFixture } from "../../hooks/pageFixture";
 import { expect } from "@playwright/test";
 
 
-Then('User click on the Add to favorites {string} link', async function (string) {
-    await pageFixture.page.locator("//div[@id='3']//button[contains(@class,'MuiButtonBase-root MuiIconButton-root Button')]").click();
+Then('User click on the Add to favorites iPhone 12 Pro Max link', async function () {
+    const favoritesPage = pageFixture.pageManager.getFavoritesPage();
+    await favoritesPage.addProductToFavorites();
 });
 
 When('User click on the favorites link', async function () {
-    await pageFixture.page.locator('//a[@href="/favourites"]').click();
+    const favoritesPage = pageFixture.pageManager.getFavoritesPage();
+    await favoritesPage.clickFavoritesLink();
 });
 
 
 Then('User should be able to see the favorites page image message', async function () {
-    await expect(pageFixture.page.locator("//img[@alt='banner main']")).toBeVisible();
+    const favoritesPage = pageFixture.pageManager.getFavoritesPage();
+    const bannerLocator = favoritesPage.verifyFavoritesPageBanner();
+    await expect(bannerLocator).toBeVisible();
 });
 
 
-Then('User should be able to see the {string} in the favorites page', async function (string) {
-    await expect(pageFixture.page.locator('p').filter({ hasText: string })).toBeVisible();
+Then('User should be able to see the {string} in the favorites page', async function (productName: string) {
+    const favoritesPage = pageFixture.pageManager.getFavoritesPage();
+    const productLocator = favoritesPage.verifyProductInFavorites(productName);
+    await expect(productLocator).toBeVisible();
 });

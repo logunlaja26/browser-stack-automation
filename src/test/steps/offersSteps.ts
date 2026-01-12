@@ -4,10 +4,13 @@ import { expect } from "@playwright/test";
 
 
 When('User click on the offers link', async function () {
-    await pageFixture.page.locator('//a[@href="/offers"]').click();
+    const offersPage = pageFixture.pageManager.getOffersPage();
+    await offersPage.clickOffersLink();
 });
 
 
 Then('User should be able to see the offers page message', async function () {
-    await expect(pageFixture.page.getByText("We've promotional offers in your location.", { exact: true })).toBeVisible();
+    const offersPage = pageFixture.pageManager.getOffersPage();
+    const messageLocator = offersPage.verifyOffersPageMessage();
+    await expect(messageLocator).toBeVisible();
 });

@@ -1,12 +1,9 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import { pageFixture } from "../../hooks/pageFixture";
 import { expect } from "@playwright/test";
-import { LoginPage } from "../../pages/loginPage";
-
-let loginPage: LoginPage;
 
 Given("User navigates to the application", async function () {
-  loginPage = new LoginPage(pageFixture.page);
+  const loginPage = pageFixture.pageManager.getLoginPage();
   await loginPage.navigateToLoginPage();
 });
 
@@ -15,14 +12,17 @@ Given("User click on the login link", async function () {
 });
 
 When("User enter the username as {string}", async function (username) {
+  const loginPage = pageFixture.pageManager.getLoginPage();
   await loginPage.enterUsername(username);
 });
 
 Given('User enter the password as {string}', async function (password) {
+  const loginPage = pageFixture.pageManager.getLoginPage();
   await loginPage.enterPassword(password);
 });
 
 Given('User enter incorrect password as {string}', async function (password) {
+  const loginPage = pageFixture.pageManager.getLoginPage();
   await loginPage.enterIncorrectPassword(password);
 });
 
