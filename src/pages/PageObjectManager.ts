@@ -24,10 +24,7 @@ export class PageObjectManager {
    * Creates instance only on first access
    */
   getLoginPage(): LoginPage {
-    if (!this.loginPage) {
-      this.loginPage = new LoginPage(this.page);
-    }
-    return this.loginPage;
+    return this.loginPage ??= new LoginPage(this.page);
   }
 
   /**
@@ -35,10 +32,7 @@ export class PageObjectManager {
    * Creates instance only on first access
    */
   getOffersPage(): OffersPage {
-    if (!this.offersPage) {
-      this.offersPage = new OffersPage(this.page);
-    }
-    return this.offersPage;
+    return this.offersPage??= new OffersPage(this.page);
   }
 
   /**
@@ -46,10 +40,7 @@ export class PageObjectManager {
    * Creates instance only on first access
    */
   getFavoritesPage(): FavoritesPage {
-    if (!this.favoritesPage) {
-      this.favoritesPage = new FavoritesPage(this.page);
-    }
-    return this.favoritesPage;
+    return this.favoritesPage??= new FavoritesPage(this.page);
   }
 
   /**
@@ -57,10 +48,7 @@ export class PageObjectManager {
    * Creates instance only on first access
    */
   getCheckoutPage(): CheckoutPage {
-    if (!this.checkoutPage) {
-      this.checkoutPage = new CheckoutPage(this.page);
-    }
-    return this.checkoutPage;
+    return this.checkoutPage??= new CheckoutPage(this.page);
   }
 
   /**
@@ -68,9 +56,6 @@ export class PageObjectManager {
    * Creates instance only on first access
    */
   getOrdersPage(): OrdersPage {
-    if (!this.ordersPage) {
-      this.ordersPage = new OrdersPage(this.page);
-    }
-    return this.ordersPage;
+    return this.ordersPage??= new OrdersPage(this.page);
   }
 }
